@@ -1,0 +1,148 @@
+@charset "UTF-8";
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+:root{
+  --c-bg: #efefef;
+  --c-shadow: hsla(223, 4%, 42%, .26);
+  --c-player: #f8f8f8;
+  --c-text-primary:#333;
+  --c-text-secondary: #999;
+  --c-primary: #0089e6;
+  --c-secondary: #eee;
+}
+
+:root.dark{
+  --c-bg: #333;
+  --c-shadow: hsla(213, 4%, 72%, .3);
+  --c-player: #111;
+  --c-text-primary:#eee;
+  --c-text-secondary: #999;
+  --c-primary: #034596;
+  --c-secondary: #444;
+}
+
+ion-icon {
+  pointer-events: none;
+  cursor: pointer;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--c-text-primary);
+  background-color: var(--c-bg);
+}
+
+.app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 380px;
+  height: 580px;
+  border-radius: 1em;
+  padding: 1.7em 1.5em;
+  background-color: var(--c-player);
+  box-shadow: 0 2px 8px var(--c-shadow);
+  box-sizing: border-box;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 94%;
+}
+
+.top-bar span {font-size: 1.2em;}
+
+.top-bar ion-icon {
+  font-size: 1.5em;
+  color: var(--c-text-secondary);
+}
+
+.album {
+  position: relative;
+  margin: 1em 0;
+  width: 240px;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  box-shadow: 4px 4px 2px var(--c-shadow);
+}
+
+.album img {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: circle();
+  animation: spin 10s linear infinite;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 2vh;
+}
+
+.details > * {margin: .25em;}
+
+.details .title{
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.details .artist {
+  color: var(--c-text-secondary);
+  font-weight: normal;
+}
+
+.progress {width: 100%;}
+
+.progress .time{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: .8em;
+  color:var(--c-text-secondary);
+}
+
+.pgs-bar {
+  width: 100%;
+  margin: .5em 0;
+}
+
+.pgs-bar .pgs-bg {
+  width: 100%;
+  height: 6px;
+  background-color: var(--c-secondary);
+  border-radius: 3px;
+}
+
+.pgs-bar .pgs-line {
+  width: 60%;
+  height: 6px;
+  border-radius: 6px;
+  background-color: var(--c-primary);
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  width: 98%;
+}
+
+.controls ion-icon{
+  color: var(--c-primary);
+  font-size: 1.8em;
+}
