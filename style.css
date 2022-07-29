@@ -12,6 +12,7 @@
   --c-text-secondary: #999;
   --c-primary: #0089e6;
   --c-secondary: #eee;
+  --c-border: #e5e5e5;
 }
 
 :root.dark{
@@ -22,12 +23,10 @@
   --c-text-secondary: #999;
   --c-primary: #034596;
   --c-secondary: #444;
+  --c-border: #3e3e3e;
 }
 
-ion-icon {
-  pointer-events: none;
-  cursor: pointer;
-}
+ion-icon {cursor: pointer;}
 
 body {
   display: flex;
@@ -36,6 +35,7 @@ body {
   min-height: 100vh;
   color: var(--c-text-primary);
   background-color: var(--c-bg);
+  user-select: none;
 }
 
 .app {
@@ -49,7 +49,7 @@ body {
   border-radius: 1em;
   padding: 1.7em 1.5em;
   background-color: var(--c-player);
-  box-shadow: 0 2px 8px var(--c-shadow);
+  box-shadow: 0 2px 6px var(--c-shadow);
   box-sizing: border-box;
 }
 
@@ -130,10 +130,22 @@ body {
 }
 
 .pgs-bar .pgs-line {
+  position: relative;
   width: 60%;
   height: 6px;
   border-radius: 6px;
   background-color: var(--c-primary);
+}
+
+.pgs-bar .pgs-line::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background-color: var(--c-primary);
+  border-radius: 100%;
 }
 
 .controls {
@@ -145,4 +157,75 @@ body {
 .controls ion-icon{
   color: var(--c-primary);
   font-size: 1.8em;
+}
+
+.play-list {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 380px;
+  height: calc(580px * .65);
+  border-radius: 1em;
+  padding: 1.2em 1em;
+  background-color: var(--c-player);
+  box-shadow: 0 1px 4px var(--c-shadow);
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.play-list > * {
+  margin: 0 1em;
+}
+
+.play-list .list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 1.5em 0;
+  font-size: 1.2em;
+}
+
+.list-header ion-icon {
+  font-size: 1.2em;
+  color: var(--c-text-secondary);
+}
+
+.play-list .lists {
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+}
+
+.play-list .lists::-webkit-scrollbar {width: 0;}
+
+
+.lists li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 1em 0;
+  padding-bottom: 1em;
+  border-bottom: 1px solid var(--c-border);
+  cursor: pointer;
+}
+
+.lists li:last-child {border: 0;}
+
+.row > * {display: block;}
+
+.row .title {
+  font-weight: 600;
+}
+
+.row .artist {
+  padding-top: .5em;
+  color: var(--c-text-secondary);
+  font-size: .9em;
+}
+
+.playing .li-duration ion-icon {
+  font-size: 1.25em;
 }
